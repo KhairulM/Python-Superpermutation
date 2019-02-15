@@ -1,4 +1,5 @@
 import itertools
+import sys
 
 def unite(currRes, candidate, record):
     el_len = len(currRes)
@@ -85,18 +86,21 @@ def superPermute(perm_list):
 
 
 def main():
-    nbObj = int(input("Number of object to permute : "))
-    obj_list = []
-    perm_list = []
+    if len(sys.argv) < 2:
+        print("[ERROR] : number of arguments did not meet")
+    else:
+        nbObj = int(sys.argv[1])
+        obj_list = []
+        perm_list = []
 
-    for i in range(0, nbObj):
-        obj_list.append(i+1)
-    
-    perm_list = list(itertools.permutations(obj_list, nbObj))
+        for i in range(0, nbObj):
+            obj_list.append(i+1)
+        
+        perm_list = list(itertools.permutations(obj_list, nbObj))
 
-    result = superPermute(perm_list)
+        result = superPermute(perm_list)
 
-    print(result)
-    print("Length : " + str(len(result)))
+        print(result)
+        print("Length : " + str(len(result)))
 
 main()
